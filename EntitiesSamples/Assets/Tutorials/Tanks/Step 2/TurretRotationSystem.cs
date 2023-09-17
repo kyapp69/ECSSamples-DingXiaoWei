@@ -41,13 +41,14 @@ namespace Tutorials.Tanks.Step2
             // the Turret component values, we call WithAll<Turret>().
             // Without this WithAll() call, the query would match *all* entities having transform components,
             // and this foreach would rotate more than just the turrets.
+            // 遍历带有Turret组件的坦克
             foreach (var transform in
                      SystemAPI.Query<RefRW<LocalTransform>>()
                          .WithAll<Turret>())
             {
                 // ValueRW returns a ref to the actual component value.
                 // Add a rotation around the parent's Y axis.
-                transform.ValueRW.Rotation = math.mul(spin, transform.ValueRO.Rotation);
+                transform.ValueRW.Rotation = math.mul(spin, transform.ValueRO.Rotation); // 旋转
             }
         }
     }

@@ -28,6 +28,7 @@ namespace Tutorials.Tanks.Execute
 
         class Baker : Baker<ExecuteAuthoring>
         {
+            // Ìí¼Ó×é¼þ
             public override void Bake(ExecuteAuthoring authoring)
             {
                 var entity = GetEntity(TransformUsageFlags.None);

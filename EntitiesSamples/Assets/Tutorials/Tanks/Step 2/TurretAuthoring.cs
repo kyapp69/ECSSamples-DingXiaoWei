@@ -40,11 +40,11 @@ namespace Tutorials.Tanks.Step2
         public Entity CannonBallSpawn;
     }
 
-    // This component will be used in Step 8.
-    // This is a tag component that is also an "enableable component".
-    // Such components can be toggled on and off without removing the component from the entity,
-    // which would be less efficient and wouldn't retain the component's value.
-    // An Enableable component is initially enabled.
+    // 该组件将在步骤 8 中使用。
+    // 这是一个标签组件，也是一个“启用组件”。
+    // 可以打开和关闭此类组件，而无需从实体中删除组件，
+    // 这会降低效率并且不会保留组件的值。
+    // Enableable 组件最初被启用。
     public struct Shooting : IComponentData, IEnableableComponent
     {
     }
