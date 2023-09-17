@@ -10,7 +10,7 @@ namespace HelloCube.GameObjectSync
         [BurstCompile]
         public void OnCreate(ref SystemState state)
         {
-            state.RequireForUpdate<DirectoryManaged>();
+            state.RequireForUpdate<DirectoryManaged>(); // 只有在其他System中添加了这个组件，才会执行这个System里面的Update方法
             state.RequireForUpdate<Execute.GameObjectSync>();
         }
 
