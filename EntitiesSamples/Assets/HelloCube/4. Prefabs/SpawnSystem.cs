@@ -22,8 +22,8 @@ namespace HelloCube.Prefabs
         [BurstCompile]
         public void OnUpdate(ref SystemState state)
         {
-            // Create a query that matches all entities having a RotationSpeed component.
-            // (The query is cached in source generation, so this does not incur a cost of recreating it every update.)
+            // 创建一个匹配所有具有 RotationSpeed 组件的实体的查询。
+            // （查询在源生成中缓存，因此不会产生每次更新时重新创建它的成本。）
             var spinningCubesQuery = SystemAPI.QueryBuilder().WithAll<RotationSpeed>().Build();
 
             // Only spawn cubes when no cubes currently exist.
@@ -34,8 +34,8 @@ namespace HelloCube.Prefabs
                 // Instantiating an entity creates copy entities with the same component types and values.
                 var instances = state.EntityManager.Instantiate(prefab, 500, Allocator.Temp);
 
-                // Unlike new Random(), CreateFromIndex() hashes the random seed
-                // so that similar seeds don't produce similar results.
+                // 与 new Random() 不同，CreateFromIndex() 对随机种子进行哈希处理
+                // 这样相似的种子就不会产生相似的结果
                 var random = Random.CreateFromIndex(updateCounter++);
 
                 foreach (var entity in instances)

@@ -11,11 +11,11 @@ namespace HelloCube.Prefabs
         // In baking, this Baker will run once for every SpawnerAuthoring instance in a subscene.
         // (Note that nesting an authoring component's Baker class inside the authoring MonoBehaviour class
         // is simply an optional matter of style.)
-        class Baker : Baker<SpawnerAuthoring>
+        class Baker : Baker<SpawnerAuthoring> // 将GameObject转化成Entity
         {
             public override void Bake(SpawnerAuthoring authoring)
             {
-                var entity = GetEntity(TransformUsageFlags.None);
+                var entity = GetEntity(TransformUsageFlags.None); // 获取它自己的实体
                 AddComponent(entity, new Spawner
                 {
                     Prefab = GetEntity(authoring.Prefab, TransformUsageFlags.Dynamic)
