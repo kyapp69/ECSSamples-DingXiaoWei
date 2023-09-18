@@ -7,6 +7,7 @@ using Unity.Transforms;
 
 namespace Tutorials.Tanks.Step4
 {
+    // 发射子弹System
     [UpdateInGroup(typeof(LateSimulationSystemGroup))]
     public partial struct TurretShootingSystem : ISystem
     {
@@ -19,6 +20,7 @@ namespace Tutorials.Tanks.Step4
         [BurstCompile]
         public void OnUpdate(ref SystemState state)
         {
+            // 不断实例化子弹并且添加组件
             foreach (var (turret, localToWorld) in
                      SystemAPI.Query<TurretAspect, RefRO<LocalToWorld>>()
                          .WithAll<Shooting>())
@@ -31,7 +33,7 @@ namespace Tutorials.Tanks.Step4
                     Rotation = quaternion.identity,
                     Scale = SystemAPI.GetComponent<LocalTransform>(turret.CannonBallPrefab).Scale
                 });
-
+                // 下落组件
                 state.EntityManager.SetComponentData(instance, new CannonBall
                 {
                     Velocity = localToWorld.ValueRO.Up * 20.0f

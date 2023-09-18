@@ -18,7 +18,7 @@ namespace Tutorials.Tanks.Step4
                 AddComponent<CannonBall>(entity);
 
                 // Used in Step 8.
-                AddComponent<URPMaterialPropertyBaseColor>(entity);
+                AddComponent<URPMaterialPropertyBaseColor>(entity); // 添加颜色组件
             }
         }
     }

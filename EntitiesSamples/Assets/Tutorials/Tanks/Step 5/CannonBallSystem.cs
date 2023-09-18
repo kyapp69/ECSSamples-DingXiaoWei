@@ -19,7 +19,7 @@ namespace Tutorials.Tanks.Step5
         public void OnUpdate(ref SystemState state)
         {
             var ecbSingleton = SystemAPI.GetSingleton<EndSimulationEntityCommandBufferSystem.Singleton>();
-
+            // 不断创建Job
             var cannonBallJob = new CannonBallJob
             {
                 ECB = ecbSingleton.CreateCommandBuffer(state.WorldUnmanaged),
@@ -36,7 +36,7 @@ namespace Tutorials.Tanks.Step5
     {
         public EntityCommandBuffer ECB;
         public float DeltaTime;
-
+        // 执行子弹的运动
         void Execute(Entity entity, ref CannonBall cannonBall, ref LocalTransform transform)
         {
             var gravity = new float3(0.0f, -9.82f, 0.0f);

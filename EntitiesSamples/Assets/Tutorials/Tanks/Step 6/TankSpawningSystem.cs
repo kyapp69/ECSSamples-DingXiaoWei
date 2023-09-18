@@ -22,7 +22,7 @@ namespace Tutorials.Tanks.Step6
         {
             state.Enabled = false;
 
-            var config = SystemAPI.GetSingleton<Config>();
+            var config = SystemAPI.GetSingleton<Config>(); // 获取单例组件
             // This system will only run once, so the random seed can be hard-coded.
             // Using an arbitrary constant seed makes the behavior deterministic.
             var random = new Random(123);
@@ -34,7 +34,7 @@ namespace Tutorials.Tanks.Step6
 
             var ecb = new EntityCommandBuffer(Allocator.Temp);
             var tanks = new NativeArray<Entity>(config.TankCount, Allocator.Temp);
-            ecb.Instantiate(config.TankPrefab, tanks);
+            ecb.Instantiate(config.TankPrefab, tanks); // 通过ECS实例化多个坦克
 
             foreach (var tank in tanks)
             {
